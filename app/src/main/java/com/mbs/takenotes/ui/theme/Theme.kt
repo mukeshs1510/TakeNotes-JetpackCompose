@@ -12,6 +12,16 @@ private val DarkColorPalette = darkColors(
         secondary = Teal200
 )
 
+@Composable
+fun CleanArchitectureNoteTheme(darkTheme: Boolean = true, content: @Composable () -> Unit) {
+    MaterialTheme(
+        colors = DarkColorPalette,
+        typography = Typography,
+        shapes = Shapes,
+        content = content
+    )
+}
+
 private val LightColorPalette = lightColors(
         primary = Purple500,
         primaryVariant = Purple700,
