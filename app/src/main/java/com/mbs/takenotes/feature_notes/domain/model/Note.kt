@@ -3,6 +3,7 @@ package com.mbs.takenotes.feature_notes.domain.model
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.mbs.takenotes.ui.theme.*
+import java.lang.Exception
 
 @Entity
 data class Note(
@@ -17,3 +18,7 @@ data class Note(
                                 Violet, BabyBlue, RedPink)
     }
 }
+
+
+class InvalidNoteException(message: String): Exception(message)
+
