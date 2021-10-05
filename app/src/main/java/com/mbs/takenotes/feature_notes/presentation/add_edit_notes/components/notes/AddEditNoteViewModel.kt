@@ -62,7 +62,7 @@ class AddEditNoteViewModel @Inject constructor(
     private val _eventFlow = MutableSharedFlow<UiEvent>()
     val eventFlow = _eventFlow.asSharedFlow()
 
-    fun eonEvent(event: AddEditNoteEvent) {
+    fun onEvent(event: AddEditNoteEvent) {
         when(event){
             is AddEditNoteEvent.EnteredTitle -> {
                 _noteTitle.value = noteTitle.value.copy(
