@@ -11,6 +11,7 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Save
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -24,6 +25,7 @@ import androidx.navigation.NavController
 import com.mbs.takenotes.feature_notes.domain.model.Note
 import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.AddEditNoteViewModel
 import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.notes.ui_components.TransparentHintText
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 @Composable
@@ -45,6 +47,21 @@ fun AddEditNoteEvent(
     }
 
     val scope = rememberCoroutineScope()
+
+    LaunchedEffect(key1 = true) {
+        viewModel.eventFlow.collectLatest { event ->
+            when(event) {
+                is AddEditNoteViewModel.UiEvent.ShowSnackbar -> {
+                    scaffoldState.snackbarHostState.showSnackbar(
+                        message = event.message
+                    )
+                }
+                is AddEditNoteViewModel.UiEvent.SaveNote -> {
+                    navController.navigateUp()
+                }
+            }
+        }
+    }
 
     Scaffold(
         floatingActionButton = {
@@ -121,7 +138,8 @@ fun AddEditNoteEvent(
                     viewModel.onEvent(AddEditNoteEvent.ChangeContentFocus(it))
                 },
                 isHintVisible = contentState.isHintVisible,
-                textStyle = MaterialTheme.typography.body1
+                textStyle = MaterialTheme.typography.body1,
+                modifier = Modifier.fillMaxHeight()
             )
         }
     }
