@@ -4,14 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavType
+import androidx.compose.material.Surface
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -19,8 +14,7 @@ import androidx.navigation.navArgument
 import com.mbs.takenotes.feature_notes.presentation.notes.NotesScreen
 import com.mbs.takenotes.feature_notes.presentation.util.Screen
 import com.mbs.takenotes.ui.theme.CleanArchitectureNoteTheme
-import com.mbs.takenotes.ui.theme.TakeNotesTheme
-import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.notes.AddEditNoteEvent
+import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.notes.AddEditNoteScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,7 +24,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             CleanArchitectureNoteTheme {
-                androidx.compose.material.Surface(
+                Surface(
                     color = MaterialTheme.colors.background
                 ) {
                     val navController = rememberNavController()
@@ -60,7 +54,7 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val color = it.arguments?.getInt("noteColor") ?: -1
-                            AddEditNoteEvent(
+                            AddEditNoteScreen(
                                 navController = navController,
                                 noteColor = color
                             )
