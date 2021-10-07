@@ -1,4 +1,4 @@
-package com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.notes
+package com.mbs.takenotes.feature_notes.presentation.add_edit_notes
 
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
@@ -23,7 +23,6 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mbs.takenotes.feature_notes.domain.model.Note
-import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.AddEditNoteViewModel
 import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.notes.ui_components.TransparentHintText
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch

@@ -1,4 +1,4 @@
-package com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.notes
+package com.mbs.takenotes.feature_notes.presentation.add_edit_notes
 
 data class NoteTextFieldState(
     val text: String = "",

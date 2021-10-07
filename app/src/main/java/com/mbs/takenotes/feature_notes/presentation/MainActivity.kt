@@ -11,10 +11,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.AddEditNoteScreen
 import com.mbs.takenotes.feature_notes.presentation.notes.NotesScreen
 import com.mbs.takenotes.feature_notes.presentation.util.Screen
 import com.mbs.takenotes.ui.theme.CleanArchitectureNoteTheme
-import com.mbs.takenotes.feature_notes.presentation.add_edit_notes.components.notes.AddEditNoteScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
