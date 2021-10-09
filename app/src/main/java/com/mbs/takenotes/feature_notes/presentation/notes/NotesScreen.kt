@@ -19,6 +19,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.mbs.takenotes.feature_notes.presentation.notes.components.NoteItem
 import com.mbs.takenotes.feature_notes.presentation.notes.components.OrderSection
+import com.mbs.takenotes.feature_notes.presentation.util.Screen
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalAnimationApi::class)
@@ -33,7 +34,9 @@ fun NotesScreen(
 
     Scaffold(
         floatingActionButton = {
-            FloatingActionButton(onClick = { },
+            FloatingActionButton(onClick = {
+                                           navController.navigate(Screen.AddEditNoteScreen.route)
+            },
             backgroundColor = MaterialTheme.colors.primary) {
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add new Note")
             }

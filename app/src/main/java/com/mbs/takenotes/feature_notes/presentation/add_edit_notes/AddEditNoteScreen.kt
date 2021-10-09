@@ -1,5 +1,6 @@
 package com.mbs.takenotes.feature_notes.presentation.add_edit_notes
 
+import android.util.Log
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
@@ -19,6 +20,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -33,6 +35,8 @@ fun AddEditNoteScreen(
     noteColor: Int,
     viewModel: AddEditNoteViewModel = hiltViewModel()
 ) {
+
+    var logMsg: String = "AddEditNoteScreen"
 
     val titleState = viewModel.noteTitle.value
     val contentState = viewModel.noteContent.value
@@ -70,6 +74,7 @@ fun AddEditNoteScreen(
                 backgroundColor = MaterialTheme.colors.primary
             ) {
                 Icon(imageVector = Icons.Default.Save, contentDescription = "Save Note")
+                Log.d(logMsg, "floating clicked")
             }
         },
         scaffoldState = scaffoldState
@@ -144,3 +149,4 @@ fun AddEditNoteScreen(
     }
 
 }
+

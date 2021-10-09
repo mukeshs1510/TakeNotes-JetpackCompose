@@ -7,6 +7,7 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.MaterialTheme
 import androidx.navigation.NavType
 import androidx.compose.material.Surface
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -16,9 +17,14 @@ import com.mbs.takenotes.feature_notes.presentation.notes.NotesScreen
 import com.mbs.takenotes.feature_notes.presentation.util.Screen
 import com.mbs.takenotes.ui.theme.CleanArchitectureNoteTheme
 import dagger.hilt.android.AndroidEntryPoint
+import android.util.Log
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    lateinit var navController: NavHostController
+    var logMsg: String = "MainActivity"
+
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +33,7 @@ class MainActivity : ComponentActivity() {
                 Surface(
                     color = MaterialTheme.colors.background
                 ) {
-                    val navController = rememberNavController()
+                    navController = rememberNavController()
                     NavHost(
                         navController = navController,
                         startDestination = Screen.NoteScreen.route
@@ -54,6 +60,7 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val color = it.arguments?.getInt("noteColor") ?: -1
+                            Log.d(logMsg, "from Main")
                             AddEditNoteScreen(
                                 navController = navController,
                                 noteColor = color
@@ -65,3 +72,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
+
+
+
+
